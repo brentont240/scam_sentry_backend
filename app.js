@@ -12,7 +12,7 @@ const password = process.env.SCAM_SENTRY_PASSWORD;
 // TODO: REMOVE PASS BEFORE PUBLISHING!!! (between the : and @)
 
 const MONGODB_URL = process.env.MONGODB_URL || `mongodb+srv://${username}:${password}@scamsentrycluster.urdcn.mongodb.net/Tools`;
-
+const MONGODB_URI = MONGODB_URL;
 
 const corsOptions = {
    origin: "https://scam-sentry-backend.herokuapp.com/",
@@ -36,7 +36,7 @@ app.use(cors(corsOptions));
 
 
 mongoose
-    .connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("Connected to MongoDB");
      })
