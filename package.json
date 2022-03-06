@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node app.js",
-    "startND": "npx nodemon --exec npx babel-node app.js"
+    "start": "npx nodemon --exec npx babel-node app.js"
   },
   "keywords": [
     "heroku"
