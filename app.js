@@ -15,7 +15,7 @@ const MONGODB_URL = process.env.MONGODB_URL || `mongodb+srv://${username}:${pass
 
 
 const corsOptions = {
-   origin: "https://proveassignmentsbrenton.herokuapp.com/",
+   origin: "https://scam-sentry-backend.herokuapp.com/",
    optionsSuccessStatus: 200
  };
 
