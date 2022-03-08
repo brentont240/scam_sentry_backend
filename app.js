@@ -12,10 +12,9 @@ const MONGODB_URL = process.env.MONGODB_URL || `mongodb+srv://${username}:${pass
 const MONGODB_URI = MONGODB_URL;
 
 // TODO: note remove localhost:3000 once done testing
-// "https://scam-sentry-backend.herokuapp.com/","http://localhost:3000/", 
 const corsOptions = {
-   origin: 'https://scamsentry.netlify.app/',
-   optionsSuccessStatus: 200
+   origin: ['https://scam-sentry-backend.herokuapp.com/','http://localhost:3000/', 'https://scamsentry.netlify.app/'],
+   optionsSuccessStatus: 200,
  };
 
 const app = express();
@@ -29,9 +28,10 @@ const emailDetectorRoutes = require('./routes/emailDetector');
 
 const PORT = process.env.PORT || 8000;
 
+app.use(cors(corsOptions));
 app.use(express.json()); // Needed to read the body. (instead of body parser, body parser is depricated)
 app.use(emailDetectorRoutes);
-app.use(cors(corsOptions));
+
 
 
 mongoose
