@@ -5,17 +5,15 @@ const cors = require('cors');
 
 // Database Setup
 // Connect to MongoDB
-// TODO: PUT THE USERNAME AND PASSWORD IN ENVIRONEMENT VARIABLES: LOOK AT SUPER BRACKETS FOR MORE INFO!!!
 const username = process.env.SCAM_SENTRY_USERNAME;
 const password = process.env.SCAM_SENTRY_PASSWORD;
-
-// TODO: REMOVE PASS BEFORE PUBLISHING!!! (between the : and @)
 
 const MONGODB_URL = process.env.MONGODB_URL || `mongodb+srv://${username}:${password}@scamsentrycluster.urdcn.mongodb.net/Tools`;
 const MONGODB_URI = MONGODB_URL;
 
+// TODO: note remove localhost:3000 once done testing
 const corsOptions = {
-   origin: "https://scam-sentry-backend.herokuapp.com/",
+   origin: ["https://scam-sentry-backend.herokuapp.com/","http://localhost:3000/", "https://scamsentry.netlify.app/"],
    optionsSuccessStatus: 200
  };
 
