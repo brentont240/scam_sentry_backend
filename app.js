@@ -12,8 +12,9 @@ const MONGODB_URL = process.env.MONGODB_URL || `mongodb+srv://${username}:${pass
 const MONGODB_URI = MONGODB_URL;
 
 // TODO: note remove localhost:3000 once done testing
+// "https://scam-sentry-backend.herokuapp.com/","http://localhost:3000/", 
 const corsOptions = {
-   origin: ["https://scam-sentry-backend.herokuapp.com/","http://localhost:3000/", "https://scamsentry.netlify.app/"],
+   origin: 'https://scamsentry.netlify.app/',
    optionsSuccessStatus: 200
  };
 
