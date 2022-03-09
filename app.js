@@ -15,8 +15,7 @@ const MONGODB_URI = MONGODB_URL;
 // Do we need multiple orgins?
 // FIXME: fix the cors error!!!
 const corsOptions = {
-   origin: ['https://scam-sentry-backend.herokuapp.com/','http://localhost:3000/', 'https://scamsentry.netlify.app/'],
-   optionsSuccessStatus: 200,
+   origin: 'http://localhost:3000/'
  };
 
 const app = express();
