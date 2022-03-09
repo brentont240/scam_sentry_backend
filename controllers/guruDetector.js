@@ -19,16 +19,17 @@ exports.checkGuru = (req, res, next) => {
             websites.push(website);
         });
       });
-      let websiteMatch = checkMatch(userInput, websites);
-      let guruMatch = checkMatch(userInput, gurus);
+    //   TODO: get this to work!!!
+    //   let websiteMatch = checkMatch(userInput, websites);
+    //   let guruMatch = checkMatch(userInput, gurus);
 
-      if(websiteMatch !== ""){
-        matchFound = true;
-        res.status(200).json({ matchFound, websiteMatch });
-      } else if (guruMatch !== ""){
-        matchFound = true;
-        res.status(200).json({ matchFound, guruMatch });
-      } else
+    //   if(websiteMatch !== ""){
+    //     matchFound = true;
+    //     res.status(200).json({ matchFound, websiteMatch });
+    //   } else if (guruMatch !== ""){
+    //     matchFound = true;
+    //     res.status(200).json({ matchFound, guruMatch });
+    //   } else
         res.status(200).json({ matchFound });
     });
 }
