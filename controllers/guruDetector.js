@@ -30,20 +30,21 @@ exports.checkGuru = (req, res, next) => {
     //     matchFound = true;
     //     res.status(200).json({ matchFound, guruMatch });
     //   } else
-        res.status(200).json({ matchFound });
+        res.status(200).json({ gurus, websites });
     });
 }
 
-function checkMatch(input, source){
-    let match = "";
-    source.forEach((keyword) => {
-      if (input.includes(keyword.toLowerCase())) {
-        match = keyword;
-        break;
-      }
-    });
-    if(match !== ""){
-        return match;
-    }
-    else return "";
-}
+// FIXME: get this to work
+// function checkMatch(input, source){
+//     let match = "";
+//     source.forEach((keyword) => {
+//       if (input.includes(keyword.toLowerCase())) {
+//         match = keyword;
+//         break;
+//       }
+//     });
+//     if(match !== ""){
+//         return match;
+//     }
+//     else return "";
+// }
