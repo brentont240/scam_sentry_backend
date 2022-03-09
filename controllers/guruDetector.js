@@ -14,9 +14,6 @@ exports.checkGuru = (req, res, next) => {
       databaseList.forEach((guru) => {
         result += (guru.guru_name);
       });
+      res.status(200).json({ result });
     });
-
-    res.status(200).json({ result });
-
-
 }
