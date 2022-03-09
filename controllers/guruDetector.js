@@ -14,8 +14,8 @@ exports.checkGuru = (req, res, next) => {
     .then((databaseList) => {
       databaseList.forEach((guru) => {
         gurus.push(guru.guru_name);
-        guru.website.forEach((website) => {
-        websites.push(website);
+        guru.websites.forEach((website) => {
+            websites.push(website);
         });
       });
       res.status(200).json({ gurus, websites });
