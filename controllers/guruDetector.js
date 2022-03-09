@@ -5,7 +5,7 @@
  *******************************************/
  const Fake_Gurus = require("../models/fakeGurus");
 
-exports .checkGuru = (req, res, next) => {
+exports.checkGuru = (req, res, next) => {
     let userInput = (req.body.input).toLowerCase();
     console.log(userInput);
     let result = "";

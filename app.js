@@ -26,12 +26,14 @@ const app = express();
 // TODO: SHOULD I PUT /api/ in front of the routes?
 
 const emailDetectorRoutes = require('./routes/emailDetector');
+const guruDetectorRoutes = require('./routes/guruDetector');
 
 const PORT = process.env.PORT || 8000;
 
 app.use(cors(corsOptions));
 app.use(express.json()); // Needed to read the body. (instead of body parser, body parser is depricated)
 app.use(emailDetectorRoutes);
+app.use(guruDetectorRoutes);
 
 
 
