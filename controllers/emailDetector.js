@@ -11,6 +11,9 @@ const Email_Keywords = require("../models/emailKeywords");
 // TODO: do i need to use async await?
 // FIXME: FIX WORD WRAP ISSUE?
 exports.checkEmail = (req, res, next) => {
+
+  res.header("Access-Control-Allow-Orgin", "http://localhost:3000/");
+  res.header("Access-Control-Allow-Headers", "Orgin, X-Requested-With, Content-Type, Accept");
   // note the field should be called input!!!
  // need to make the input lowercase so it will match the keywords!
   let userInput = (req.body.input).toLowerCase();
