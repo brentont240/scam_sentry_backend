@@ -11,13 +11,14 @@ const Email_Keywords = require("../models/emailKeywords");
 // TODO: do i need to use async await?
 // FIXME: FIX WORD WRAP ISSUE?
 exports.checkEmail = (req, res, next) => {
-  
+
   // note the field should be called input!!!
  // need to make the input lowercase so it will match the keywords!
   let userInput = (req.body.input).toLowerCase();
   console.log(userInput);
 
   let keywordsList = [];
+  let isShort = false;
   Email_Keywords.find()
     .then((databaseList) => {
       databaseList.forEach((keyword) => {
@@ -25,9 +26,10 @@ exports.checkEmail = (req, res, next) => {
       });
       let matches = checkKeywords(userInput, keywordsList);
       let rating = rateScam(matches);
+      if (rating < 2)
+        isShort = checkLength(userInput);
       // TODO: maybe don't send the matches, send a code so the server knows if it is a scam or not, or if it is close, or if it is definetly a scam
-      console.log(matches, rating );
-      res.status(200).json({ matches, rating });
+      res.status(200).json({ rating, isShort });
     })
     .catch((err) => {
       console.log(err);
@@ -69,6 +71,16 @@ function rateScam(numMatches) {
     // more than 10 means definetly a scam
     return 3;
   }
+}
+
+function checkLength(input){
+  // this is how many words count as short
+  let words = (input.match(/\S+/g)).length;
+  const shortLength = 100;
+  if (words < shortLength){
+   return true;
+  }
+   return false;
 }
 
 // WORD WRAP ISSUE: IT WONT COUNT US DOLLARS IN THIS ONE
