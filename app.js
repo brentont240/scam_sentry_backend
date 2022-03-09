@@ -15,7 +15,7 @@ const MONGODB_URI = MONGODB_URL;
 // Do we need multiple orgins?
 // FIXME: fix the cors error!!!
 const corsOptions = {
-   origin: 'http://localhost:3000/'
+   origin: 'http://localhost:3000'
  };
 
 const app = express();
