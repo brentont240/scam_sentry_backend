@@ -8,12 +8,14 @@
 exports.checkGuru = (req, res, next) => {
     let userInput = (req.body.input).toLowerCase();
     console.log(userInput);
-    let result = [];
+    let gurus = [];
+    let websites = [];
     Fake_Gurus.find()
     .then((databaseList) => {
       databaseList.forEach((guru) => {
-        result.push(guru.guru_name);
+        gurus.push(guru.guru_name);
+        websites.push(guru.website);
       });
-      res.status(200).json({ result });
+      res.status(200).json({ gurus, websites });
     });
 }
