@@ -31,8 +31,8 @@ exports.checkGuru = (req, res, next) => {
       //   res.status(200).json({ matchFound, guruMatch });
       // } else
 
-      if (websiteMatch != null || guruMatch != null)
-        matchFound = true;
+      // if (websiteMatch != null || guruMatch != null)
+      //   matchFound = true;
         // res.status(200).json({ gurus, websites });
         // res.status(200).json({ websiteMatch, guruMatch });
         res.status(200).json({matchFound, websiteMatch, guruMatch});
