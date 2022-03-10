@@ -20,8 +20,8 @@ exports.checkGuru = (req, res, next) => {
         });
       });
     //   TODO: get this to work!!!
-       let websiteMatch = checkMatch(userInput, websites);
-       let guruMatch = checkMatch(userInput, gurus);
+      //  let websiteMatch = checkMatch(userInput, websites);
+      //  let guruMatch = checkMatch(userInput, gurus);
 
     //   if(websiteMatch !== ""){
     //     matchFound = true;
@@ -30,8 +30,8 @@ exports.checkGuru = (req, res, next) => {
     //     matchFound = true;
     //     res.status(200).json({ matchFound, guruMatch });
     //   } else
-        // res.status(200).json({ gurus, websites });
-        res.status(200).json({ websiteMatch, guruMatch });
+        res.status(200).json({ gurus, websites });
+        // res.status(200).json({ websiteMatch, guruMatch });
     });
 }
 
