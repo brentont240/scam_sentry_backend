@@ -4,13 +4,13 @@
  *    or if a website is part of a get rich quick scheme
  *******************************************/
  const Fake_Gurus = require("../models/fakeGurus");
+ let matchFound = false;
 
 exports.checkGuru = (req, res, next) => {
     let userInput = (req.body.input).toLowerCase();
     console.log(userInput);
     let gurus = [];
     let websites = [];
-    let matchFound = false;
     Fake_Gurus.find()
     .then((databaseList) => {
       databaseList.forEach((guru) => {
@@ -20,8 +20,8 @@ exports.checkGuru = (req, res, next) => {
         });
       });
     //   TODO: get this to work!!!
-       let websiteMatch = checkMatch(userInput, websites);
-       let guruMatch = checkMatch(userInput, gurus);
+      const websiteMatch = checkMatch(userInput, websites);
+      const guruMatch = checkMatch(userInput, gurus);
 
       // if(websiteMatch != null){
       //   matchFound = true;
@@ -45,6 +45,7 @@ function checkMatch(input, source){
     source.forEach((keyword) => {
       if (input.includes(keyword.toLowerCase())) {
         match = keyword;
+        matchFound = true;
         return match;
         // break;
       }
