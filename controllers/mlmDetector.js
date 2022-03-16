@@ -9,10 +9,6 @@ let matchFound = false;
 let match = null;
 let type = null;
 
-// TODO:
-// TODO:
-// TODO: GET THIS TO WORK THEN UNCOMMENT THE ROUTE THING IN APP.JS!!!
-
 
 exports.checkCompany = (req, res, next) => {
     let userInput = (req.body.input).toLowerCase();
@@ -23,9 +19,7 @@ exports.checkCompany = (req, res, next) => {
       databaseList.forEach((company) => {
         companys.push({company: company.company, type: company.type});
       });
-      
       checkMatch(userInput, companys);
-    //   res.status(200).json({companys});
       res.status(200).json({matchFound, match, type});
     })
     .catch((err) => {
@@ -36,9 +30,7 @@ exports.checkCompany = (req, res, next) => {
 function checkMatch(input, mlmList){
     let currMlm = '';
     mlmList.forEach((mlm) => {
-      console.log("Mlm: " + mlm);
       currMlm = mlm.company;
-      console.log("currMlm: " + currMlm);
       // remove parenthesis to check the match, if there exists parenthesis
       if (currMlm.includes('(')){
         currMlm = currMlm.substring(0,currMlm.indexOf('(')-1);
