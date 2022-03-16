@@ -13,5 +13,7 @@ const mlmDetectorController = require("../controllers/mlmDetector");
 const bodyParser = require("body-parser");
 
 router.post('/mlm-detector', mlmDetectorController.checkCompany);
+// for testing, remove this when done!!!
+router.get('/mlm-detector', mlmDetectorController.test)
 
 module.exports = router;
