@@ -23,7 +23,7 @@ exports.checkCompany = (req, res, next) => {
       databaseList.forEach((company) => {
         companys.push(company);
       });
-    //   checkMatch(userInput, companys);
+      checkMatch(userInput, companys);
       res.status(200).json({matchFound, match, type});
     })
     .catch((err) => {

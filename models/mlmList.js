@@ -7,4 +7,4 @@ const mlmSchema = new Schema({
     type: { type: String, required: true }
 });
 
-module.exports = mongoose.model('Fake_Gurus', mlmSchema);
+module.exports = mongoose.model('Mlm_List', mlmSchema);
