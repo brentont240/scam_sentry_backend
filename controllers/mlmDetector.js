@@ -37,8 +37,8 @@ exports.test = (req, res, next) => {
   .then((databaseList) => {
       console.log(databaseList);
     });
-    res.status(200).json({databaseList});
-}
+    // res.status(200).json({databaseList});
+};
 
 // function checkMatch(input, mlmList){
 //     let currMlm = '';
