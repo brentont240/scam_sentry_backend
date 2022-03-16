@@ -23,7 +23,7 @@ exports.checkCompany = (req, res, next) => {
       databaseList.forEach((company) => {
         companys.push(company);
       });
-      checkMatch(userInput, companys);
+      // checkMatch(userInput, companys);
       res.status(200).json({companys});
     //   res.status(200).json({matchFound, match, type});
     })
@@ -40,21 +40,21 @@ exports.test = (req, res, next) => {
     res.status(200).json({databaseList});
 }
 
-function checkMatch(input, mlmList){
-    let currMlm = '';
-    mlmList.forEach((mlm) => {
-      currMlm = mlm.company;
-      match = mlm.company;
-      // remove parenthesis to check the match, if there exists parenthesis
-      if (currMlm.includes('(')){
-        currMlm = currMlm.substring(0,currMlm.indexOf('(')-1);
-      }
-      if (input === currMlm.toLowerCase()) {
-        match = mlm.company;
-        matchFound = true;
-        type = mlm.type;
-        return;
-      }
-    });
-    return;
-}
+// function checkMatch(input, mlmList){
+//     let currMlm = '';
+//     mlmList.forEach((mlm) => {
+//       currMlm = mlm.company;
+//       match = mlm.company;
+//       // remove parenthesis to check the match, if there exists parenthesis
+//       if (currMlm.includes('(')){
+//         currMlm = currMlm.substring(0,currMlm.indexOf('(')-1);
+//       }
+//       if (input === currMlm.toLowerCase()) {
+//         match = mlm.company;
+//         matchFound = true;
+//         type = mlm.type;
+//         return;
+//       }
+//     });
+//     return;
+// }
