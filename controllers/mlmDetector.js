@@ -1,10 +1,10 @@
 /*******************************************
  * These controller functions are for:
- *    Detecting if an entered person is a fake guru
- *    or if a website is part of a get rich quick scheme
+ *    Detecting if an entered company is an mlm
+ *    and what kind of company it is
  *******************************************/
- const Fake_Gurus = require("../models/fakeGurus");
- let matchFound = false;
+
+const Mlm_List = require("../models/mlmList");
 
 exports.checkGuru = (req, res, next) => {
     let userInput = (req.body.input).toLowerCase();
@@ -28,16 +28,3 @@ exports.checkGuru = (req, res, next) => {
       console.log(err);
     });
 };
-
-function checkMatch(input, source){
-    let match = null;
-    source.forEach((keyword) => {
-      // need to check if null, can't do toLowerCase on null
-      if (keyword != null && input.includes(keyword.toLowerCase())) {
-        match = keyword;
-        matchFound = true;
-        return match;
-      }
-    });
-    return match;
-}
