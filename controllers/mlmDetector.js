@@ -21,7 +21,7 @@ exports.checkCompany = (req, res, next) => {
     Mlm_List.find()
     .then((databaseList) => {
       databaseList.forEach((company) => {
-        companys.push(company);
+        companys.push({company: company.company, type: company.type});
       });
       checkMatch(userInput, companys);
       res.status(200).json({companys});
