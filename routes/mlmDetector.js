@@ -1,6 +1,6 @@
 /*******************************************
  * These routes are for:
- *    the guru detector tool
+ *    the MLM detector tool
  *    
  *******************************************/
 
