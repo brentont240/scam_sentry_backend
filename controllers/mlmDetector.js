@@ -35,6 +35,7 @@ function checkMatch(input, mlmList){
     let currMlm = '';
     mlmList.forEach((mlm) => {
       currMlm = mlm.company;
+      match = mlm.company;
       // remove parenthesis to check the match, if there exists parenthesis
       if (currMlm.includes('(')){
         currMlm = currMlm.substring(0,currMlm.indexOf('(')-1);
