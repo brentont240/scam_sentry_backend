@@ -18,18 +18,24 @@ exports.checkCompany = (req, res, next) => {
     let userInput = (req.body.input).toLowerCase();
     console.log(userInput);
     let companys = [];
-    Mlm_List.find()
-    .then((databaseList) => {
-      console.log("The list: " + databaseList);
-      databaseList.forEach((company) => {
-        companys.push(company);
-      });
-      // checkMatch(userInput, companys);
-      res.status(200).json({companys});
-    //   res.status(200).json({matchFound, match, type});
-    })
-    .catch((err) => {
-      console.log(err);
+    // Mlm_List.find()
+    // .then((databaseList) => {
+    //   console.log("The list: " + databaseList);
+    //   databaseList.forEach((company) => {
+    //     companys.push(company);
+    //   });
+    //   // checkMatch(userInput, companys);
+    //   res.status(200).json({companys});
+    // //   res.status(200).json({matchFound, match, type});
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // });
+    Mlm_List.findOne({company: input})
+    .then(results => {
+        console.log(results);
+        matchFound = true;
+        res.status(200).json({matchFound});
     });
 };
 
