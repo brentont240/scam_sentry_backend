@@ -20,6 +20,7 @@ exports.checkCompany = (req, res, next) => {
     let companys = [];
     Mlm_List.find()
     .then((databaseList) => {
+      console.log("The list: " + databaseList);
       databaseList.forEach((company) => {
         companys.push(company);
       });
