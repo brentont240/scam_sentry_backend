@@ -32,7 +32,7 @@ function checkMatch(input, mlmList){
       currMlm = mlm.company;
       // remove parenthesis to check the match, if there exists parenthesis
       if (currMlm.includes('(')){
-        currMlm = currMlm.substring(0,currMlm.indexOf('('));
+        currMlm = currMlm.substring(0,currMlm.indexOf('(')-1);
       }
       // need to check if null, can't do toLowerCase on null
       if (input.includes(currMlm.toLowerCase())) {
