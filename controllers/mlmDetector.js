@@ -31,7 +31,7 @@ exports.checkCompany = (req, res, next) => {
     // .catch((err) => {
     //   console.log(err);
     // });
-    Mlm_List.findOne({company: input})
+    Mlm_List.findOne({company: userInput})
     .then(results => {
         console.log(results);
         matchFound = true;
