@@ -21,7 +21,7 @@ exports.checkCompany = (req, res, next) => {
     Mlms.find()
     .then((databaseList) => {
       databaseList.forEach((company) => {
-        companys.push([company]);
+        companys.push({company: company.company, type: company.type});
       });
       
       checkMatch(userInput, companys);
@@ -36,6 +36,7 @@ exports.checkCompany = (req, res, next) => {
 function checkMatch(input, mlmList){
     let currMlm = '';
     mlmList.forEach((mlm) => {
+      console.log("Mlm: " + mlm);
       currMlm = mlm.company;
       console.log("currMlm: " + currMlm);
       // remove parenthesis to check the match, if there exists parenthesis
