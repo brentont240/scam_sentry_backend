@@ -39,8 +39,7 @@ function checkMatch(input, mlmList){
       if (currMlm.includes('(')){
         currMlm = currMlm.substring(0,currMlm.indexOf('(')-1);
       }
-      // need to check if null, can't do toLowerCase on null
-      if (input.includes(currMlm.toLowerCase())) {
+      if (input === currMlm.toLowerCase()) {
         match = mlm.company;
         matchFound = true;
         type = mlm.type;
