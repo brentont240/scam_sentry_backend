@@ -36,6 +36,9 @@ exports.test = (req, res, next) => {
   Mlm_List.find()
   .then((databaseList) => {
       console.log(databaseList);
+    })
+    .catch((err) => {
+      console.log(err);
     });
     // res.status(200).json({databaseList});
 };
