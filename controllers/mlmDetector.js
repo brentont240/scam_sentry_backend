@@ -4,7 +4,7 @@
  *    and what kind of company it is
  *******************************************/
 
-const Mlm_List = require("../models/mlmList");
+const Mlms = require("../models/mlmList");
 let matchFound = false;
 let match = null;
 let type = null;
@@ -18,24 +18,18 @@ exports.checkCompany = (req, res, next) => {
     let userInput = (req.body.input).toLowerCase();
     console.log(userInput);
     let companys = [];
-    // Mlm_List.find()
-    // .then((databaseList) => {
-    //   console.log("The list: " + databaseList);
-    //   databaseList.forEach((company) => {
-    //     companys.push(company);
-    //   });
-    //   // checkMatch(userInput, companys);
+    Mlms.find()
+    .then((databaseList) => {
+      console.log("The list: " + databaseList);
+      databaseList.forEach((company) => {
+        companys.push(company);
+      });
+      checkMatch(userInput, companys);
     //   res.status(200).json({companys});
-    // //   res.status(200).json({matchFound, match, type});
-    // })
-    // .catch((err) => {
-    //   console.log(err);
-    // });
-    Mlm_List.findOne({company: userInput})
-    .then(results => {
-        console.log(results);
-        matchFound = true;
-        res.status(200).json({matchFound});
+      res.status(200).json({matchFound, match, type});
+    })
+    .catch((err) => {
+      console.log(err);
     });
 };
 

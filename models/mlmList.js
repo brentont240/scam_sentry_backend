@@ -7,4 +7,4 @@ const mlmSchema = new Schema({
     type: { type: String, required: false }
 });
 
-module.exports = mongoose.model('Mlm_List', mlmSchema);
+module.exports = mongoose.model('Mlms', mlmSchema);
