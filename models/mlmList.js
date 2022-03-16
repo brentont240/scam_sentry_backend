@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const mlmSchema = new Schema({
     company: { type: String, required: true },
-    type: { type: String, required: true }
+    type: { type: String, required: false }
 });
 
 module.exports = mongoose.model('Mlm_List', mlmSchema);
