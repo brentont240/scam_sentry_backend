@@ -20,6 +20,7 @@ exports.checkCompany = (req, res, next) => {
         companys.push({company: company.company, type: company.type});
       });
       checkMatch(userInput, companys);
+      console.log({matchFound, match, type});
       res.status(200).json({matchFound, match, type});
     })
     .catch((err) => {
