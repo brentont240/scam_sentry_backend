@@ -15,8 +15,7 @@ exports.checkCompany = (req, res, next) => {
     matchFound = false;
     match = null;
     type = null;
-    let userInput = (req.body.input).toLowerCase();
-    console.log(userInput);
+    let userInput = (req.body.input).toLowerCase().trim();
     let companys = [];
     Mlms.find()
     .then((databaseList) => {
