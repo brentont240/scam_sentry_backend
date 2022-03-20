@@ -11,6 +11,10 @@ let type = null;
 
 
 exports.checkCompany = (req, res, next) => {
+    // reset values
+    matchFound = false;
+    match = null;
+    type = null;
     let userInput = (req.body.input).toLowerCase();
     console.log(userInput);
     let companys = [];
