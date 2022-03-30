@@ -15,6 +15,7 @@ exports.checkCompany = (req, res, next) => {
     matchFound = false;
     match = null;
     type = null;
+    // remove whitespace and set all letters to lowercase
     let userInput = (req.body.input).toLowerCase().trim();
     let companys = [];
     Mlms.find()
