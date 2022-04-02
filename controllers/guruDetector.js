@@ -37,14 +37,14 @@ exports.requestGuru = (req, res, next) => {
   
   // TODO:  CAPITILISE THE FIRST LETTER OF FIRST AND LAST NAMES!!!
   if(req.body.guru_name !== ""){
-  const names = req.body.guru_name.toLowerCase().split(" ");
-  const guru_name = names.map((name) => { 
+  let names = req.body.guru_name.toLowerCase().split(" ");
+  names = names.map((name) => { 
     return name[0].toUpperCase() + name.substring(1); 
   }).join(" ");
-} else {
-  const guru_name = req.body.guru_name;
+}  else{
+  names = "";
 }
-
+  const guru_name = names;
 
   Request_Gurus.findOne({ website: website, guru_name: guru_name})
   // see if the guru has already been requested (both guru and website)
