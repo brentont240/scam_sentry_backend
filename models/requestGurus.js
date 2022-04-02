@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const guruSchema = new Schema({
     submissionTime: Date,   
-    website: { type: Array, required: false },
+    website: { type: String, required: false },
     guru_name: { type: String, required: false }
 });
 
