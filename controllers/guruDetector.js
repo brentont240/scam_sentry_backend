@@ -33,13 +33,35 @@ exports.checkGuru = (req, res, next) => {
 
 // create a new request for a guru / website (or both)
 exports.requestGuru = (req, res, next) => {
-  const guru = new Request_Gurus({
-    submissionTime: Date.now(),
-    website: req.body.website.toLowerCase(),
-    guru_name: req.body.guru_name.toLowerCase(),
+  const website = req.body.website.toLowerCase();
+  const guru_name = req.body.guru_name.toLowerCase();
+
+  Request_Gurus.findOne({ website: website, guru_name: guru_name})
+  // see if the guru has already been requested (both guru and website)
+  .then( requested_guru =>{
+    if(requested_guru){
+      return res.status(409).json({message: "Error: This request has already been made!"});
+    }
+    else{
+      // see if the guru is already in the list of known fake gurus
+      Fake_Gurus.findOne(findOne({ websites: website, guru_name: guru_name}))
+        .then( existing_guru =>{
+          if (existing_guru){
+            return res.status(409).json({message: "Error: This guru already exists in the system!"});
+          }
+          else{
+            // if no guru is found, create a request for a new one
+            const guru = new Request_Gurus({
+              submissionTime: Date.now(),
+              website: website,
+              guru_name: guru_name,
+            });
+            res.status(200).json({message: "Success!"});
+            return guru.save();
+          }
+      });
+    }
   });
-  res.status(200).json({message: "Success!"});
-  return guru.save();
 }
 
 function checkMatch(input, source){
