@@ -49,30 +49,30 @@ exports.requestGuru = (req, res, next) => {
   // see if the guru has already been requested (both guru and website)
   .then( requested_guru =>{
     // if the name is empty, check the website
-    if (guru_name === ""){
-      Request_Gurus.findOne({ website: website})
-      .then( websiteExist => {
-        if(websiteExist){
-          return res.status(409).json({message: "Error: This request has already been made!"});
-        }
-      });
-      Fake_Gurus.findOne({ website: website})
-        .then( existing_guru =>{
-          if (existing_guru){
-            return res.status(409).json({message: "Error: This website already exists in the system!"});
-          }
-          else{
-            // if no guru is found, create a request for a new one
-            const guru = new Request_Gurus({
-              submissionTime: Date.now(),
-              website: website,
-              guru_name: guru_name,
-            });
-            res.status(200).json({message: "Success!"});
-            return guru.save();
-          }
-      });
-    }
+    // if (guru_name === ""){
+    //   Request_Gurus.findOne({ website: website})
+    //   .then( websiteExist => {
+    //     if(websiteExist){
+    //       return res.status(409).json({message: "Error: This request has already been made!"});
+    //     }
+    //   });
+    //   Fake_Gurus.findOne({ website: website})
+    //     .then( existing_guru =>{
+    //       if (existing_guru){
+    //         return res.status(409).json({message: "Error: This website already exists in the system!"});
+    //       }
+    //       else{
+    //         // if no guru is found, create a request for a new one
+    //         const guru = new Request_Gurus({
+    //           submissionTime: Date.now(),
+    //           website: website,
+    //           guru_name: guru_name,
+    //         });
+    //         res.status(200).json({message: "Success!"});
+    //         return guru.save();
+    //       }
+    //   });
+    // }
     if(requested_guru){
       return res.status(409).json({message: "Error: This request has already been made!"});
     }
