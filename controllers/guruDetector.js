@@ -44,7 +44,8 @@ exports.requestGuru = (req, res, next) => {
     }
     else{
       // see if the guru is already in the list of known fake gurus
-      Fake_Gurus.findOne({ websites: [{website}], guru_name: guru_name})
+      Fake_Gurus.findOne({ guru_name: guru_name })
+      // TODO: make it so it needs to check website too!
         .then( existing_guru =>{
           if (existing_guru){
             return res.status(409).json({message: "Error: This guru already exists in the system!"});
