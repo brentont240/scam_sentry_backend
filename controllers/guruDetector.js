@@ -34,13 +34,15 @@ exports.checkGuru = (req, res, next) => {
 // create a new request for a guru / website (or both)
 exports.requestGuru = (req, res, next) => {
   const website = req.body.website.toLowerCase();
-  
+  let guru_name = req.body.guru_name;
   // TODO:  CAPITILISE THE FIRST LETTER OF FIRST AND LAST NAMES!!!
-
-  const names = req.body.guru_name.toLowerCase().split(" ");
-  const guru_name = names.map((name) => { 
+  
+  if(guru_name !== ""){
+  const names = guru_name.toLowerCase().split(" ");
+  guru_name = names.map((name) => { 
     return name[0].toUpperCase() + name.substring(1); 
   }).join(" ");
+}
 
 
   Request_Gurus.findOne({ website: website, guru_name: guru_name})
