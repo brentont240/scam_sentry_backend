@@ -45,6 +45,7 @@ exports.requestGuru = (req, res, next) => {
   Request_Gurus.findOne({ website: website, guru_name: guru_name})
   // see if the guru has already been requested (both guru and website)
   .then( requested_guru =>{
+    console.log(requested_guru);
     if(requested_guru){
       return res.status(409).json({message: "Error: This request has already been made!"});
     }
