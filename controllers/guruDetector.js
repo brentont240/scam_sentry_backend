@@ -74,7 +74,7 @@ exports.requestGuru = (req, res, next) => {
     //   });
     // }
     if(requested_guru){
-      return res.status(409).json({message: "Error: This request has already been made!", ErrorBody: "We will look into this request as soon as possible."});
+      return res.status(409).json({message: "Error: This request has already been made!", errorBody: "We will look into this request as soon as possible."});
     }
     else{
       // see if the guru is already in the list of known fake gurus
@@ -82,7 +82,7 @@ exports.requestGuru = (req, res, next) => {
       // TODO: make it so it needs to check website too!
         .then( existing_guru =>{
           if (existing_guru){
-            return res.status(409).json({message: "Error: This guru already exists in the system!", ErrorBody: "This guru and/or website already exists in the system."});
+            return res.status(409).json({message: "Error: This guru already exists in the system!", errorBody: "This guru and/or website already exists in the system."});
           }
           else{
             // if no guru is found, create a request for a new one
