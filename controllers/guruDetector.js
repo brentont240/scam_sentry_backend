@@ -3,7 +3,9 @@
  *    Detecting if an entered person is a fake guru
  *    or if a website is part of a get rich quick scheme
  *******************************************/
- const Fake_Gurus = require("../models/fakeGurus");
+ const req = require("express/lib/request");
+const Fake_Gurus = require("../models/fakeGurus");
+ const Request_Gurus = require("../models/requestGurus");
  let matchFound = false;
 
 exports.checkGuru = (req, res, next) => {
@@ -28,6 +30,17 @@ exports.checkGuru = (req, res, next) => {
       console.log(err);
     });
 };
+
+// create a new request for a guru / website (or both)
+exports.requestGuru = (req, res, next) => {
+  const guru = new Request_Gurus({
+    submissionTime: Date.now(),
+    website: req.body.website.toLowerCase(),
+    guru_name: req.body.guru_name.toLowerCase(),
+  });
+  res.status(200).json({message: "Success!"});
+  return guru.save();
+}
 
 function checkMatch(input, source){
     let match = null;

@@ -13,5 +13,6 @@ const guruDetectorController = require("../controllers/guruDetector");
 const bodyParser = require("body-parser");
 
 router.post('/guru-detector', guruDetectorController.checkGuru);
+router.post('/request-guru', guruDetectorController.requestGuru);
 
 module.exports = router;
